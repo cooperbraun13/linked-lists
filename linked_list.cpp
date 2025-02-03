@@ -99,7 +99,7 @@ int LinkedList::search(int v) {
     return -1;
 }
 
-bool LinkedList::is_empty(){
+bool LinkedList::is_empty() {
     return head == nullptr;
 }
 
@@ -181,7 +181,7 @@ bool LinkedList::remove_value(int v) {
 void LinkedList::print() {
     Node* iter = head;
     while (iter != nullptr) {
-        std::cout << iter-> value << " ";
+        std::cout << iter->value << " ";
         iter = iter->next;
     } 
     std::cout << std::endl;

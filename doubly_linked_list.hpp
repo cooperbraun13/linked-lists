@@ -30,6 +30,8 @@ class DoublyLinkedList {
         bool remove_value(int v);
         void print();
         void print_reverse();
+        DLLNode* get_head() { return head; }
+        DLLNode* get_tail();
 };
 
 #endif

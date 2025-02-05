@@ -8,6 +8,8 @@ class DLLNode {
         DLLNode* prev;
         DLLNode();
         DLLNode(int v);
+        DLLNode(DLLNode* n);
+        DLLNode(int v, DLLNode* n);
         DLLNode(int v, DLLNode* n, DLLNode* p);
         ~DLLNode();
 };
@@ -31,7 +33,7 @@ class DoublyLinkedList {
         void print();
         void print_reverse();
         DLLNode* get_head() { return head; }
-        DLLNode* get_tail();
+        DLLNode* get_tail() { return tail; }
 };
 
 #endif

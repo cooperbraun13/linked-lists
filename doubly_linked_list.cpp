@@ -80,11 +80,13 @@ bool DoublyLinkedList::insert(int v, int i) {
     }
     DLLNode* iter = head;
     if (i < size() / 2) {
+        // traverse from head if index is in the first half of the list
         iter = head;
         for (int count = 0; count < i; count++) {
             iter = iter->next;
         }
     } else {
+        // traverse from tail if index is in the second half of the list
         iter = tail;
         for (int count = size() - 1; count > i; count--) {
             iter = iter->prev;

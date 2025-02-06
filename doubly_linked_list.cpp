@@ -116,3 +116,28 @@ int DoublyLinkedList::at(int i) {
     }
     return iter->value;
 }
+
+int DoublyLinkedList::search(int v) {
+    if (is_empty()) {
+        return -1;
+    }
+    DLLNode* front_iter = head;
+    DLLNode* back_iter = tail;
+    int front_index = 0;
+    int back_index = size() - 1;
+    while (front_index <= back_index) {
+        // check front pointer
+        if (front_iter->value == v) {
+            return front_index;
+        }
+        // check back pointer
+        if (back_iter->value == v) {
+            return back_index;
+        }
+        // move both iterators
+        front_iter = front_iter->next;
+        back_iter = back_iter->prev;
+        front_index++;
+        back_index--;
+    }
+}

@@ -46,14 +46,29 @@ DoublyLinkedList::~DoublyLinkedList() {
 }
 
 bool DoublyLinkedList::push_back(int v) {
+    if (is_empty()) {
+        return push_front(v);
+    }
+    DLLNode* new_node = new DLLNode(v);
+    new_node->prev = tail;
+    tail->next = new_node;
+    tail = new_node;
+    return true;
+}
+
+bool DoublyLinkedList::push_front(int v) {
     DLLNode* new_node = new DLLNode(v);
     if (is_empty()) {
         head = new_node;
         tail = new_node;
     } else {
-        new_node->prev = tail;
-        tail->next = new_node;
-        tail = new_node;
+        new_node->next = head;
+        head->prev = new_node;
+        head = new_node;
     }
     return true;
+}
+
+bool DoublyLinkedList::insert(int v, int i) {
+
 }

@@ -97,3 +97,22 @@ bool DoublyLinkedList::insert(int v, int i) {
     iter->prev = new_node;
     return true;
 }
+
+int DoublyLinkedList::at(int i) {
+    if (i < 0 || i >= size()) {
+        throw std::out_of_range("invalid Index for List");
+    }
+    DLLNode* iter;
+    if (i > size() / 2) {
+        iter = head;
+        for (int count = 0; count < i; count++) {
+            iter = iter->next;
+        }
+    } else {
+        iter = tail;
+        for (int count = size() - 1; count > i; count--) {
+            iter = iter->prev;
+        }
+    }
+    return iter->value;
+}

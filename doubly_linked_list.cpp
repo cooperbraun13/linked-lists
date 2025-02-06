@@ -141,3 +141,19 @@ int DoublyLinkedList::search(int v) {
         back_index--;
     }
 }
+
+bool DoublyLinkedList::is_empty() {
+    // a tad overkill but rather safe than sorry
+    return (head == nullptr && tail == nullptr);
+}
+
+int DoublyLinkedList::size() {
+    if (is_empty()) {
+        return 0;
+    }
+    int count = 1;
+    for (DLLNode* iter = head; iter->next != nullptr; iter=iter->next) {
+        count++;
+    }
+    return count;
+}

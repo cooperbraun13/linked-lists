@@ -50,6 +50,7 @@ bool DoublyLinkedList::push_back(int v) {
         return push_front(v);
     }
     DLLNode* new_node = new DLLNode(v);
+    // new_node's prev pointer is set to the current tail
     new_node->prev = tail;
     tail->next = new_node;
     tail = new_node;
@@ -70,5 +71,27 @@ bool DoublyLinkedList::push_front(int v) {
 }
 
 bool DoublyLinkedList::insert(int v, int i) {
-
+    if (i > size() || i < 0) {
+        return false;
+    } else if (i == 0) {
+        return push_front(v);
+    } else if (i == size()) {
+        return push_back(v);
+    }
+    DLLNode* iter = head;
+    if (i < size() / 2) {
+        iter = head;
+        for (int count = 0; count < i; count++) {
+            iter = iter->next;
+        }
+    } else {
+        iter = tail;
+        for (int count = size() - 1; count > i; count--) {
+            iter = iter->prev;
+        }
+    }
+    DLLNode* new_node = new DLLNode(v, iter, iter->prev);
+    iter->prev->next = new_node;
+    iter->prev = new_node;
+    return true;
 }

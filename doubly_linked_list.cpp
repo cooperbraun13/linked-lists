@@ -157,3 +157,19 @@ int DoublyLinkedList::size() {
     }
     return count;
 }
+
+bool DoublyLinkedList::remove(int i) {
+
+}
+
+bool DoublyLinkedList::remove_value(int v) {
+
+}
+
+void DoublyLinkedList::print() {
+
+}
+
+void DoublyLinkedList::print_reverse() {
+    
+}

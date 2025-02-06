@@ -62,7 +62,8 @@ bool DoublyLinkedList::push_front(int v) {
     if (is_empty()) {
         head = new_node;
         tail = new_node;
-    } else {
+    } 
+    else {
         new_node->next = head;
         head->prev = new_node;
         head = new_node;
@@ -73,9 +74,11 @@ bool DoublyLinkedList::push_front(int v) {
 bool DoublyLinkedList::insert(int v, int i) {
     if (i > size() || i < 0) {
         return false;
-    } else if (i == 0) {
+    } 
+    else if (i == 0) {
         return push_front(v);
-    } else if (i == size()) {
+    } 
+    else if (i == size()) {
         return push_back(v);
     }
     DLLNode* iter = head;
@@ -85,7 +88,8 @@ bool DoublyLinkedList::insert(int v, int i) {
         for (int count = 0; count < i; count++) {
             iter = iter->next;
         }
-    } else {
+    } 
+    else {
         // traverse from tail if index is in the second half of the list
         iter = tail;
         for (int count = size() - 1; count > i; count--) {
@@ -108,7 +112,8 @@ int DoublyLinkedList::at(int i) {
         for (int count = 0; count < i; count++) {
             iter = iter->next;
         }
-    } else {
+    } 
+    else {
         iter = tail;
         for (int count = size() - 1; count > i; count--) {
             iter = iter->prev;
@@ -159,7 +164,15 @@ int DoublyLinkedList::size() {
 }
 
 bool DoublyLinkedList::remove(int i) {
+    if (is_empty()) {
+        return false;
+    } 
+    else if (i < 0 || i >= size()) {
+        return false;
+    } 
+    else if (i == 0) {
 
+    }
 }
 
 bool DoublyLinkedList::remove_value(int v) {
@@ -171,5 +184,5 @@ void DoublyLinkedList::print() {
 }
 
 void DoublyLinkedList::print_reverse() {
-    
+
 }

@@ -208,9 +208,19 @@ bool DoublyLinkedList::remove_value(int v) {
 }
 
 void DoublyLinkedList::print() {
-
+    DLLNode* iter = head;
+    while (iter != nullptr) {
+        std::cout << iter->value << " ";
+        iter = iter->next;
+    }
+    std::cout << std::endl;
 }
 
 void DoublyLinkedList::print_reverse() {
-
+    DLLNode* iter = tail;
+    while (iter != nullptr) {
+        std::cout << iter->value << " ";
+        iter = iter->prev;
+    }
+    std::cout << std::endl;
 }

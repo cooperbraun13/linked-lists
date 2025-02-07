@@ -107,7 +107,7 @@ int DoublyLinkedList::at(int i) {
         throw std::out_of_range("invalid Index for List");
     }
     DLLNode* iter;
-    if (i > size() / 2) {
+    if (i < size() / 2) {
         iter = head;
         for (int count = 0; count < i; count++) {
             iter = iter->next;
@@ -145,6 +145,7 @@ int DoublyLinkedList::search(int v) {
         front_index++;
         back_index--;
     }
+    return -1;
 }
 
 bool DoublyLinkedList::is_empty() {

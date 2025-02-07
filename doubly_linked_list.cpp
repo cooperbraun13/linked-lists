@@ -166,13 +166,41 @@ int DoublyLinkedList::size() {
 bool DoublyLinkedList::remove(int i) {
     if (is_empty()) {
         return false;
-    } 
+    }
     else if (i < 0 || i >= size()) {
         return false;
-    } 
-    else if (i == 0) {
-
     }
+    // removing head
+    if (i == 0) {
+        DLLNode* temp = head;
+        head = head->next;
+        if (head) {
+            head->prev = nullptr;
+        }
+        else {
+            tail = nullptr;
+        }
+        temp->next = nullptr;
+        delete temp;
+        return true;
+    }
+    // traverse to the node being removed
+    DLLNode* iter = head;
+    for (int count = 0; count < i; count++) {
+        iter = iter->next;
+    }
+    // update pointers
+    iter->prev->next = iter->next;
+    if (iter->next) {
+        iter->next->prev = iter->prev;
+    }
+    else {
+        tail = iter->prev;
+    }
+    iter->next = nullptr;
+    iter->prev = nullptr;
+    delete iter;
+    return true;
 }
 
 bool DoublyLinkedList::remove_value(int v) {

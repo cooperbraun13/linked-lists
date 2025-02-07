@@ -178,6 +178,7 @@ bool DoublyLinkedList::remove(int i) {
             head->prev = nullptr;
         }
         else {
+            // list is now empty
             tail = nullptr;
         }
         temp->next = nullptr;
@@ -204,7 +205,37 @@ bool DoublyLinkedList::remove(int i) {
 }
 
 bool DoublyLinkedList::remove_value(int v) {
-
+    if (is_empty()) {
+        return false;
+    }
+    DLLNode* iter = head;
+    while (iter != nullptr && iter->value != v) {
+        iter = iter->next;
+    }
+    if (iter == nullptr) {
+        return false;
+    }
+    if (iter == head) {
+        head = head->next;
+        if (head) {
+            head->prev = nullptr;
+        }
+        else {
+            tail = nullptr;
+        }
+    }
+    else if (iter == tail) {
+        tail = tail->prev;
+        tail->next = nullptr;
+    }
+    else {
+        iter->prev->next = iter->next;
+        iter->next->prev = iter->prev;
+    }
+    iter->next = nullptr;
+    iter->prev = nullptr;
+    delete iter;
+    return true;
 }
 
 void DoublyLinkedList::print() {

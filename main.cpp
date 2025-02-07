@@ -13,4 +13,12 @@ int main() {
     l1.print();
     l1.remove_value(32);
     l1.print();
+    DoublyLinkedList l2;
+    l2.push_back(10);
+    l2.push_front(5);
+    l2.push_back(32);
+    cout << l2.size() << endl;
+    l2.print();
+    l2.remove_value(32);
+    l2.print();
 }
